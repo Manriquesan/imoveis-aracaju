@@ -1,0 +1,16 @@
+{
+  "name": "imoveis-aracaju",
+  "version": "1.0.0",
+  "description": "Corretora de Imóveis em Aracaju - SE",
+  "scripts": {
+    "start": "npx serve -s . -l 3000",
+    "dev": "npx serve -s . -l 3000",
+    "deploy": "npx netlify-cli deploy --prod --dir=."
+  },
+  "keywords": ["imobiliária", "aracaju", "imóveis", "sergipe"],
+  "author": "Imóveis Aracaju",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.0"
+  }
+}
