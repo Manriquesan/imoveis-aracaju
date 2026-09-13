@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imóveis Aracaju - Corretora Profissional</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-icon">🏢</span>
+                <span class="logo-text">Imóveis<span class="logo-highlight">Aracaju</span></span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#imoveis">Imóveis</a></li>
+                <li><a href="#analise">Análise de Mercado</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#contato">Contato</a></li>
+                <li><a href="#agendar" class="btn-nav">Agendar Visita</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Seu Próximo Imóvel em <span class="highlight">Aracaju</span></h1>
+            <p class="hero-subtitle">Análise de mercado especializada, valorização garantida e atendimento personalizado para você encontrar o imóvel ideal na capital sergipana.</p>
+            <div class="hero-cta">
+                <a href="#imoveis" class="btn btn-primary">Explorar Imóveis</a>
+                <a href="#analise" class="btn btn-secondary">Ver Análise de Mercado</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number" id="statProperties">0</span>
+                    <span class="stat-label">Imóveis Disponíveis</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" id="statSatisfaction">0</span>
+                    <span class="stat-label">Clientes Satisfeitos</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" id="statValorization">0</span>
+                    <span class="stat-label">% de Valorização Média</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <section class="section" id="imoveis">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Imóveis em Destaque</h2>
+                <p class="section-subtitle">Selecionados com rigor e análise de mercado para o melhor investimento em Aracaju</p>
+            </div>
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="apartamento">Apartamentos</button>
+                <button class="filter-btn" data-filter="casa">Casas</button>
+                <button class="filter-btn" data-filter="terreno">Terrenos</button>
+                <button class="filter-btn" data-filter="comercial">Comercial</button>
+            </div>
+            <div class="properties-grid" id="propertiesGrid">
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-alt" id="analise">
+        <div class="container">
+            <div class="section-header center">
+                <h2 class="section-title">Análise de Mercado Profissional</h2>
+                <p class="section-subtitle">Saiba quanto seu imóvel pode se valorizar em Aracaju com nossa análise de mercado especializada</p>
+            </div>
+            <div class="analysis-container">
+                <div class="analysis-calculator">
+                    <h3 class="calculator-title">Projeção de Valorização</h3>
+                    <div class="form-group">
+                        <label for="propertyValue">Valor Atual do Imóvel (R$)</label>
+                        <input type="number" id="propertyValue" placeholder="Ex: 350000" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="propertyType">Tipo de Imóvel</label>
+                        <select id="propertyType">
+                            <option value="apartamento">Apartamento</option>
+                            <option value="casa">Casa</option>
+                            <option value="terreno">Terreno</option>
+                            <option value="comercial">Comercial</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="propertyArea">Área (m²)</label>
+                        <input type="number" id="propertyArea" placeholder="Ex: 85" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="propertyYear">Ano de Construção</label>
+                        <input type="number" id="propertyYear" placeholder="Ex: 2015" min="1950" max="2025">
+                    </div>
+                    <div class="form-group">
+                        <label for="propertyNeighborhood">Bairro</label>
+                        <select id="propertyNeighborhood">
+                            <option value="atuante">Atalaia</option>
+                            <option value="siqueira">Siqueira</option>
+                            <option value="stio">Stio</option>
+                            <option value="farolandia">Farolândia</option>
+                            <option value="jabocardo">Jaboticedo</option>
+                            <option value="coracao">Coração</option>
+                            <option value="santa">Santa Maria</option>
+                            <option value="capitu">Capitão Luís</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary btn-full" id="calculateBtn">Calcular Projeção</button>
+                </div>
+                <div class="analysis-results" id="analysisResults">
+                    <div class="result-card">
+                        <h4 class="result-label">Valor Projetado (5 anos)</h4>
+                        <div class="result-value" id="projectedValue">-</div>
+                        <div class="result-detail" id="valueGrowth"></div>
+                    </div>
+                    <div class="result-card">
+                        <h4 class="result-label">Taxa Anual de Valorização</h4>
+                        <div class="result-value" id="annualRate">-</div>
+                        <div class="result-detail" id="marketInfo"></div>
+                    </div>
+                    <div class="result-card highlight">
+                        <h4 class="result-label">Retorno Total Estimado</h4>
+                        <div class="result-value" id="totalReturn">-</div>
+                        <div class="result-detail" id="roiDetail"></div>
+                    </div>
+                    <div class="result-card">
+                        <h4 class="result-label">Ranking de Bairro</h4>
+                        <div class="result-value" id="neighborhoodRank">-</div>
+                        <div class="result-detail" id="rankDetail"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="market-trends">
+                <h3 class="trends-title">Tendências do Mercado Imobiliário em Aracaju</h3>
+                <div class="trends-cards">
+                    <div class="trend-card">
+                        <div class="trend-icon">📈</div>
+                        <h4>Valorização Crescente</h4>
+                        <p>Mercado imobiliário em Aracaju mostra valorização média de 8-12% ao ano em bairros nobres.</p>
+                    </div>
+                    <div class="trend-card">
+                        <div class="trend-icon">🏗️</div>
+                        <h4>Novos Empreendimentos</h4>
+                        <p>Grande vertente de novos condomínios na Atalaia e Farolândia impulsiona o mercado.</p>
+                    </div>
+                    <div class="trend-card">
+                        <div class="trend-icon">💰</div>
+                        <h4>Investimento Seguro</h4>
+                        <p>Capitalização segura com retornos acima da média nacional para o segmento.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="sobre">
+        <div class="container">
+            <div class="about-container">
+                <div class="about-image">
+                    <div class="about-image-placeholder">
+                        <span class="about-icon">🏢</span>
+                        <p>Sua Imobiliaria em Aracaju</p>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <h2 class="section-title">Quem Somos</h2>
+                    <p class="about-text">Somos uma corretora de imóveis profissional e dedicada em Aracaju, com foco em oferecer o melhor serviço de intermediação imobiliária para compradores e vendedores.</p>
+                    <p class="about-text">Nossa missão é transformar o sonho da casa própria em realidade, com análises de mercado precisas e atendimento personalizado.</p>
+                    <div class="about-features">
+                        <div class="feature">
+                            <span class="feature-icon">✅</span>
+                            <span class="feature-text">Mais de 500 imóveis cadastrados</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">✅</span>
+                            <span class="feature-text">Equipe de corretores certificados</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">✅</span>
+                            <span class="feature-text">Avaliação gratuita do seu imóvel</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">✅</span>
+                            <span class="feature-text">Assessoria jurídica completa</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-alt" id="contato">
+        <div class="container">
+            <div class="section-header center">
+                <h2 class="section-title">Fale Conosco</h2>
+                <p class="section-subtitle">Entre em contato e agende sua consultoria gratuita</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="contact-icon">📍</span>
+                        <div>
+                            <h4>Endereço</h4>
+                            <p>Av. Atalaia, 1234 - Atalaia, Aracaju - SE</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📞</span>
+                        <div>
+                            <h4>Telefone</h4>
+                            <p>(79) 99999-9999</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📧</span>
+                        <div>
+                            <h4>E-mail</h4>
+                            <p>contato@imoveisaracaju.com.br</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">🕐</span>
+                        <div>
+                            <h4>Horário de Atendimento</h4>
+                            <p>Seg a Sex: 08h - 18h</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contactName">Nome</label>
+                            <input type="text" id="contactName" required placeholder="Seu nome">
+                        </div>
+                        <div class="form-group">
+                            <label for="contactPhone">Telefone</label>
+                            <input type="tel" id="contactPhone" required placeholder="(79) 99999-9999">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">E-mail</label>
+                        <input type="email" id="contactEmail" required placeholder="seu@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage">Mensagem</label>
+                        <textarea id="contactMessage" rows="4" placeholder="Como podemos ajudar?" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Enviar Mensagem</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="section cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Pronto para Encontrar seu Imóvel?</h2>
+                <p>Agende uma visita e tenha uma experiência personalizada com nossa equipe especializada em Aracaju.</p>
+                <a href="#agendar" class="btn btn-primary btn-large">Agendar Visita</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="logo">
+                        <span class="logo-icon">🏢</span>
+                        <span class="logo-text">Imóveis<span class="logo-highlight">Aracaju</span></span>
+                    </a>
+                    <p class="footer-desc">Corretora de imóveis profissional em Aracaju, SE. Sua confiança, nosso compromisso.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#imoveis">Imóveis</a></li>
+                        <li><a href="#analise">Análise de Mercado</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Serviços</h4>
+                    <ul>
+                        <li><a href="#">Venda de Imóveis</a></li>
+                        <li><a href="#">Locação</a></li>
+                        <li><a href="#">Avaliação</a></li>
+                        <li><a href="#">Assessoria Jurídica</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Redes Sociais</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Instagram">📷</a>
+                        <a href="#" class="social-link" aria-label="WhatsApp">💬</a>
+                        <a href="#" class="social-link" aria-label="Facebook">📘</a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">💼</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Imóveis Aracaju. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Agendar Visita -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" id="modal">
+            <button class="modal-close" id="modalClose" aria-label="Fechar">✕</button>
+            <div class="modal-header">
+                <h2 class="modal-title">Agendar Visita</h2>
+                <p class="modal-subtitle">Preencha o formulário para agendar sua visita</p>
+            </div>
+            <form class="modal-form" id="visitForm">
+                <div class="form-group">
+                    <label for="visitName">Nome Completo</label>
+                    <input type="text" id="visitName" required placeholder="Seu nome completo">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="visitPhone">Telefone</label>
+                        <input type="tel" id="visitPhone" required placeholder="(79) 99999-9999">
+                    </div>
+                    <div class="form-group">
+                        <label for="visitEmail">E-mail</label>
+                        <input type="email" id="visitEmail" required placeholder="seu@email.com">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="visitProperty">Imóvel de Interesse</label>
+                    <select id="visitProperty">
+                        <option value="">Selecione um imóvel</option>
+                        <option value="apto1">Apartamento - Atalaia</option>
+                        <option value="apto2">Apartamento - Farolândia</option>
+                        <option value="casa1">Casa - Stio</option>
+                        <option value="apto3">Apartamento - Siqueira</option>
+                        <option value="ter1">Terreno - Capitania</option>
+                        <option value="com1">Comercial - Centro</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="visitDate">Data Preferida</label>
+                        <input type="date" id="visitDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="visitTime">Horário Preferido</label>
+                        <select id="visitTime">
+                            <option value="">Selecione</option>
+                            <option value="08:00">08:00</option>
+                            <option value="09:00">09:00</option>
+                            <option value="10:00">10:00</option>
+                            <option value="14:00">14:00</option>
+                            <option value="15:00">15:00</option>
+                            <option value="16:00">16:00</option>
+                            <option value="17:00">17:00</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="visitMessage">Observações</label>
+                    <textarea id="visitMessage" rows="3" placeholder="Alguma observação ou pergunta..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Confirmar Visita</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
